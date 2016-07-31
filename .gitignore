@@ -1,0 +1,14 @@
+# Files to ignore
+
+# Compiled python files
+*.pyc
+*.pyo
+
+# PyCharm
+.idea/
+
+# Virtual environment
+venv/
+
+# Personal config file
+config.json
