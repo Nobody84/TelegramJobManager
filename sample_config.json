@@ -1,0 +1,15 @@
+{
+  "bot_token": "<bot token>",
+  "logFile": "manager.log",
+  "jobFolder": "jobs",
+  "users": {
+    "user1": {
+      "telegram_chat_id": 0,
+      "groups": [ "admin", "backup", "docker" ]
+    },
+    "user2": {
+      "telegram_chat_id": 0,
+      "groups": [ "maintenance" ]
+    }
+  }
+}
