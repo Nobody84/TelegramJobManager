@@ -4,7 +4,7 @@ import sys
 import json
 import logging
 from user import User
-from JobManager import jobmanager
+from jobmanager import JobManager
 
 # Enable telegram bot logging
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
