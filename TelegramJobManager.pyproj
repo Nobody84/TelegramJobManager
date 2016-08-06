@@ -34,6 +34,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="logging.json">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="sample_config.json" />
     <Content Include="config.json" />
   </ItemGroup>

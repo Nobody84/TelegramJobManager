@@ -4,6 +4,7 @@ import telegram
 from telegram.ext import Updater, CommandHandler, updater
 from user import User
 from datetime import datetime
+import logging
 
 class NotificationBot():
 
@@ -30,28 +31,35 @@ class NotificationBot():
 
     def send_startup_nofitication(self):
         for user in self.users:
-            if user.is_member_of_group("admin"):
+            if user.is_member_of_group('admin'):
                 self.send_message(user.telegram_chat_id, text='Startup: ' + datetime.now().strftime('%a %d. %b - %H:%M'))
 
     def __init__(self, job_manager, users, token):
         self.job_manager = job_manager        
         self.users = users
         self.token = token
-
+        self.logger = logging.getLogger(__name__)
+        
         self.ready = False
         self.sendMessages = 0
 
-        # Cerate the Telegram bot
+        self.logger.info('Startup')
+        self.logger.debug('Bot token: ' + token)        
+
+        # Create the Telegram bot
+        self.logger.info('Create the Telegram bot')
         self.bot = telegram.Bot(token=self.token)
         self.updater = Updater(bot=self.bot)
+
 
         # Get the dispatcher to register handlers
         self.dispatcher = self.updater.dispatcher
 
+        self.logger.info('Register handlers')
         if self.dispatcher is not None:
             self.dispatcher.add_handler(CommandHandler('start', self.start))
             self.dispatcher.add_handler(CommandHandler('hello', self.hello))
             self.ready = True
         
-        print('Telegram bot active')       
+        self.logger.info('Telegram bot active')       
         
