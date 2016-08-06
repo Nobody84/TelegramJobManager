@@ -25,9 +25,16 @@
     <Compile Include="bot.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="jobmanager.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="TelegramJobManager.py" />
+    <Compile Include="user.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="sample_config.json" />
     <Content Include="config.json" />
   </ItemGroup>
   <PropertyGroup>

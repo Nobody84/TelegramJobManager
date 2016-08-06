@@ -2,6 +2,8 @@
 
 import telegram
 from telegram.ext import Updater, CommandHandler, updater
+from user import User
+from datetime import datetime
 
 class NotificationBot():
 
@@ -20,20 +22,27 @@ class NotificationBot():
         self.sendMessages += 1
 
     def is_authorized(self, bot, update):
-        authorized_users = [x['telegram_chat_id'] for x in self.cfg["users"].values() if 'telegram_chat_id' in x]
-        if update.message.chat_id not in authorized_users:
-            self.send_message(update.message.chat_id, text='Unauthorized: %d' % update.message.chat_id)
-            return False
-        return True
+        for user in self.users:
+            if user.telegram_chat_id == update.message.chat_id:                
+                return True
+        self.send_message(update.message.chat_id, text='Unauthorized: %d' % update.message.chat_id)
+        return False
 
-    def __init__(self, config):
-        self.cfg = config
-        
+    def send_startup_nofitication(self):
+        for user in self.users:
+            if user.is_member_of_group("admin"):
+                self.send_message(user.telegram_chat_id, text='Startup: ' + datetime.now().strftime('%a %d. %b - %H:%M'))
+
+    def __init__(self, job_manager, users, token):
+        self.job_manager = job_manager        
+        self.users = users
+        self.token = token
+
         self.ready = False
         self.sendMessages = 0
 
         # Cerate the Telegram bot
-        self.bot = telegram.Bot(token=self.cfg['bot_token'])
+        self.bot = telegram.Bot(token=self.token)
         self.updater = Updater(bot=self.bot)
 
         # Get the dispatcher to register handlers
@@ -44,8 +53,5 @@ class NotificationBot():
             self.dispatcher.add_handler(CommandHandler('hello', self.hello))
             self.ready = True
         
-        print('Telegram bot active')
+        print('Telegram bot active')       
         
-        # Start polling
-        self.updater.start_polling(clean=True, timeout=30)
-        self.updater.idle()

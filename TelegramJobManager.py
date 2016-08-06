@@ -3,7 +3,8 @@
 import sys
 import json
 import logging
-from bot import NotificationBot
+from user import User
+from JobManager import jobmanager
 
 # Enable telegram bot logging
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -22,7 +23,10 @@ def main():
 
     print('config')
     print(config)
-    NotificationBot(config)
+    
+    # initialize the job manager
+    manger = JobManager(config)
+    
 
 if __name__ == '__main__':
     main()
