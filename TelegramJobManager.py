@@ -30,14 +30,7 @@ def main():
     # initialize the job manager
     manger = JobManager(config)
 
-def setup_logging(
-    default_path='logging.json', 
-    default_level=logging.INFO,
-    env_key='LOG_CFG'
-):
-    """Setup logging configuration
-
-    """
+def setup_logging(default_path='logging.json', default_level=logging.INFO, env_key='LOG_CFG'):
     path = default_path
     value = os.getenv(env_key, None)
     if value:
