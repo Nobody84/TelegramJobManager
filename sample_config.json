@@ -4,11 +4,11 @@
   "users": {
     "user1": {
       "telegram_chat_id": 0,
-      "groups": [ "admin", "backup", "docker" ]
+      "groups": [ "admin", "backup" ]
     },
     "user2": {
       "telegram_chat_id": 0,
-      "groups": [ "maintenance" ]
+      "groups": [ "observer" ]
     }
   }
 }
