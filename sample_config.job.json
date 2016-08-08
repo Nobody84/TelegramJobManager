@@ -1,0 +1,12 @@
+{
+  "name": "Sample Job",
+  "category": "Category 1",
+  "blocking_group": "blockgroup1",
+  "information_groups": [ "admin", "observer" ],
+  "execution_groups": [ "admin" ],
+  "execution_command": {
+    "command": "samplejob.bat",
+    "parameter": "",
+    "logfile": "samplejob.log"
+  }
+}
