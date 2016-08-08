@@ -25,6 +25,9 @@
     <Compile Include="bot.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="job.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="jobmanager.py">
       <SubType>Code</SubType>
     </Compile>
@@ -39,6 +42,9 @@
     </Content>
     <Content Include="sample_config.json" />
     <Content Include="config.json" />
+    <Content Include="sample_config.job.json">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
