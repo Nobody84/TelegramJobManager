@@ -1,6 +1,6 @@
 {
   "bot_token": "<bot token>",
-  "jobFolder": "jobs",
+  "job_folder": "jobs",
   "users": {
     "user1": {
       "telegram_chat_id": 0,

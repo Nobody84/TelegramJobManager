@@ -1,5 +1,5 @@
 class User():
-    """description of class"""
+    """this class represents a user"""
 
 
     def __init__(self, user_config):
